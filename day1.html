@@ -1,0 +1,55 @@
+<p>input <br/>
+<textarea id = "input"  rows="5">199
+200
+208
+210
+200
+207
+240
+269
+260
+263
+</textarea>
+</p>
+
+<p>part 1 <br/>
+<textarea id = "output" disabled = true rows="5"></textarea>
+<br/>
+<input  type = "button" value = "solve" onclick = "solve_part1()"/>
+</p>
+<hr/>
+<p>part 2 <br/>
+<textarea id = "output_day2" disabled = true rows="5"></textarea>
+<br/>
+<input  type = "button" value = "solve" onclick = "solve()"/>
+</p>
+
+<script type="text/javascript">
+
+
+    function solve_part1()
+    {
+        input = document.getElementById("input").value;
+        output_element = document.getElementById("output");
+        
+        var vals = input.split("\n");
+        var counts = 0;
+        console.log(vals.length);
+        for (var n = 0; n < vals.length; n++)
+        {
+            if (vals[n] > vals[n-1])
+                counts++
+            console.log("comparing ["+vals[n]+"] to ["+vals[n-1]+"], is it an increase? " + (vals[n]>vals[n-1]) + " total changes: "+counts);
+        }
+        output_element.innerText = counts;
+        
+    }
+
+
+    function solve_part2()
+    {
+
+    }
+
+
+</script>
