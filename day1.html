@@ -13,7 +13,7 @@
 </p>
 
 <p>part 1 <br/>
-<textarea id = "output" disabled = true rows="5"></textarea>
+<textarea id = "output_day1" disabled = true rows="5"></textarea>
 <br/>
 <input  type = "button" value = "solve" onclick = "solve_part1()"/>
 </p>
@@ -21,35 +21,44 @@
 <p>part 2 <br/>
 <textarea id = "output_day2" disabled = true rows="5"></textarea>
 <br/>
-<input  type = "button" value = "solve" onclick = "solve()"/>
+<input  type = "button" value = "solve" onclick = "solve_part2()"/>
 </p>
 
 <script type="text/javascript">
 
 
-    function solve_part1()
+function solve_part1()
+{
+    input = document.getElementById("input").value;
+    output_element = document.getElementById("output_day1");
+    console.log(part1(input));
+    var vals = input.split("\n").map(Number);
+    var counts = 0;
+    console.log(vals.length);
+    for (var n = 1; n <= vals.length -1; n++)
     {
-        input = document.getElementById("input").value;
-        output_element = document.getElementById("output");
-        
-        var vals = input.split("\n");
-        var counts = 0;
-        console.log(vals.length);
-        for (var n = 0; n < vals.length; n++)
-        {
-            if (vals[n] > vals[n-1])
-                counts++
-            console.log("comparing ["+vals[n]+"] to ["+vals[n-1]+"], is it an increase? " + (vals[n]>vals[n-1]) + " total changes: "+counts);
-        }
-        output_element.innerText = counts;
-        
+        if (vals[n] > vals[n-1])
+            counts++
+        console.log("row number ["+n+"] comparing ["+vals[n]+"] to ["+vals[n-1]+"], is it an increase? " + (vals[n]>vals[n-1]) + " total changes: "+counts);
     }
+    output_element.innerText = counts;
+    
+}
 
 
-    function solve_part2()
-    {
-
-    }
+function solve_part2()
+{
+    input = document.getElementById("input").value;
+    output_element = document.getElementById("output_day2");
+    
+    var vals = input.split("\n").map(Number);
+    
+    var counts = 0;
+    console.log(vals.length);
+    vals2 = vals
+    console.log(vals2.filter((x, i, a) => i > 2 && x > a[i - 3]).length)
+    
+}
 
 
 </script>
